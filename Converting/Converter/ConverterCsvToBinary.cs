@@ -12,7 +12,7 @@ namespace Converter
     /// </summary>
 
 
-    class ConverterCsvToBinary
+    public class ConverterCsvToBinary: IConverter
     {
         //метод 'Convert', преобразует файл из формата Csv в бинарный.
         public void Convert(string srcPath, string destPath)

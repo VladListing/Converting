@@ -14,7 +14,7 @@ namespace Converter
     /// </summary>
 
 
-    public class ConverterBinaryToCsv
+    public class ConverterBinaryToCsv : IConverter
     {
         private string _pathBinary = null;   //путь и имя исходного бинарного файла
         private string _pathCsv = null;      //путь и имя конечного Csv файла
