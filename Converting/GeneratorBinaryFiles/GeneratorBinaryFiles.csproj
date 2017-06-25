@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DiagramGeneratorBinaryFiles.cd" />
     <None Include="PathBinary.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>PathBinary.Designer.cs</LastGenOutput>

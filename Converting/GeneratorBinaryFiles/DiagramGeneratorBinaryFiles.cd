@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GeneratorBinaryFiles.BinaryFiles">
+    <Position X="7.5" Y="1.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="GeneratorBinaryFiles.BinaryFiles.TradeRecord" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BinaryFiles.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAA=</HashCode>
+      <FileName>BinaryFiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeneratorBinaryFiles.InputValidation">
+    <Position X="1.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ASgAAAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAAEEAA=</HashCode>
+      <FileName>InputValidation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeneratorBinaryFiles.RandomString">
+    <Position X="4.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAUAAAAAAAAAAAAAIAAgAAAAABAAAAAAA=</HashCode>
+      <FileName>RandomString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
