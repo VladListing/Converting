@@ -41,9 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ConverterBinaryToCsv.cs" />
     <Compile Include="ConverterCsvToBinary.cs" />
     <Compile Include="IConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessMapping\ProcessMapping.csproj">
+      <Project>{12A767C8-BC27-4194-9DFA-8E752E8AFC06}</Project>
+      <Name>ProcessMapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

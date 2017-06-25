@@ -20,7 +20,7 @@ namespace Converter
             throw new System.NotImplementedException();
         }
 
-        //метод 'GetConvertAsync'
+        //метод 'GetConvertAsync' обрамляет в фоновую задачу
         public Task GetConvertAsync(string srcPath, string destPath)
         {
             throw new System.NotImplementedException();
