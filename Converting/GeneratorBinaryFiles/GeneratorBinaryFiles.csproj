@@ -45,12 +45,21 @@
   <ItemGroup>
     <Compile Include="BinaryFiles.cs" />
     <Compile Include="InputValidation.cs" />
+    <Compile Include="PathBinary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>PathBinary.settings</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomString.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="PathBinary.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>PathBinary.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
