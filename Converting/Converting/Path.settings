@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Converting" GeneratedClassName="Path">
+  <Profiles />
+  <Settings>
+    <Setting Name="pathBinary" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\\trades.dat</Value>
+    </Setting>
+    <Setting Name="pathCsv" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\\trades.csv</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
