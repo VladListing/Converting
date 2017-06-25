@@ -38,23 +38,27 @@ namespace Converting
             //выбираем , создать экземпляр класса преобразующего из бинарного файла в файл с разделителями Csv
             bool revert = true;
 
-            Console.SetWindowSize(90, 20);            
-                
-                //Создаем экземпляр класса 'BinaryToCsvConverter'
-                //преобразующий из бинарного файла в файл с разделителями Csv.
+            Console.SetWindowSize(90, 20);
+
+            try
+            {
+                //выбираем тип преобразования
                 IConverter converter = GetConverter(revert);
 
 
-                //создаем задачу , в которой вызываем метод 
-                //осуществляющий преобразование
+                //создаем задачу     
                 var task = converter.GetConvertAsync(pathBinary, pathCsv);
                 task.Wait();
 
                 Console.WriteLine(new string('_', 29));
                 Console.WriteLine("Состояние задачи: {0}", task.Status);
-
-                Console.ReadLine();
-
+                
+            }
+            catch (Exception m)
+            {
+                Console.WriteLine(m.Message);
+            }
+            Console.ReadLine();
         }
     }
 }
