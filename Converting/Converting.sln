@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converting", "Converting\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "Converter\Converter.csproj", "{07836081-0D88-485C-B3E1-FF35E884867E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessMapping", "ProcessMapping\ProcessMapping.csproj", "{12A767C8-BC27-4194-9DFA-8E752E8AFC06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{07836081-0D88-485C-B3E1-FF35E884867E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07836081-0D88-485C-B3E1-FF35E884867E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07836081-0D88-485C-B3E1-FF35E884867E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
