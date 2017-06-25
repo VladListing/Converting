@@ -58,6 +58,12 @@
       <LastGenOutput>Path.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter\Converter.csproj">
+      <Project>{07836081-0D88-485C-B3E1-FF35E884867E}</Project>
+      <Name>Converter</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,7 +10,7 @@ namespace Converter
     ///интерфейс 'IConverter' устанавливает методы по конвертации и обромлению в задачу.
     ///<symmary>
 
-    interface IConverter
+    public interface IConverter
     {
         //метод 'Convert' преобразует файл из одного формата в другой
         void Convert(string srcPath, string destPath);
