@@ -43,46 +43,48 @@ namespace Converter
 
                 ProcessMappingBase processMapping = new ProcessMappingConvertion(pathDat, pathCsv);
                 using (BinaryReader reader = new BinaryReader(File.Open(_pathBinary, FileMode.Open), Encoding.ASCII))
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(_pathCsv))
                 {
-                    //todo: вызов статического метода возвращяющего размер файла
-                    var a = ProcessMappingConvertion.GetCount(pathDat);
-                    var b = a/ _byteToMegabyteKoef;
-                    string sizeFile = b.ToString("#.###");
-
-                    Console.WriteLine($"Ждите, выполняется конвертация из бинарного файла: {_pathBinary} , размером: {sizeFile} Mb");
-                    Console.WriteLine($"в файл с разделителями: {_pathCsv} ");
-                    Console.WriteLine();
-
-                    reader.BaseStream.Position = 0;
-
-                    while (reader.PeekChar() > -1)
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(_pathCsv))
                     {
-                        _id = reader.ReadInt32();
-                        _account = reader.ReadInt32();
-                        _volume = reader.ReadDouble();
-                        _comment = reader.ReadString();
+                        //todo: вызов статического метода возвращяющего размер файла
+                        var a = ProcessMappingConvertion.GetCount(pathDat);
+                        var b = a / _byteToMegabyteKoef;
+                        string sizeFile = b.ToString("#.###");
 
-                        file.Write(_id);
-                        file.Write(";");
-                        file.Write(_account);
-                        file.Write(";");
-                        file.Write(_volume);
-                        file.Write(";");
-                        file.Write(_comment);
-                        file.WriteLine(";");
-                        _counter++;
+                        Console.WriteLine($"Ждите, выполняется конвертация из бинарного файла: {_pathBinary} , размером: {sizeFile} Mb");
+                        Console.WriteLine($"в файл с разделителями: {_pathCsv} ");
+                        Console.WriteLine();
 
-                        //процент выполнения    
-                        processMapping.ProcessMappingInPercent();
+                        reader.BaseStream.Position = 0;
+
+                        while (reader.PeekChar() > -1)
+                        {
+                            _id = reader.ReadInt32();
+                            _account = reader.ReadInt32();
+                            _volume = reader.ReadDouble();
+                            _comment = reader.ReadString();
+
+                            file.Write(_id);
+                            file.Write(";");
+                            file.Write(_account);
+                            file.Write(";");
+                            file.Write(_volume);
+                            file.Write(";");
+                            file.Write(_comment);
+                            file.WriteLine(";");
+                            _counter++;
+
+                            //процент выполнения    
+                            processMapping.ProcessMappingInPercent();
+                        }
+                        Console.Write("\r");
+                        Console.Write("выполнено: 100 % ");
+                        Console.WriteLine("\n\n");
+                        Console.Write($"в файл {pathCsv} конвертировано: {_counter} строк(и). ");
+                        Console.WriteLine();
+
+                        _counter = 0;
                     }
-                    Console.Write("\r");
-                    Console.Write("выполнено: 100 % ");
-                    Console.WriteLine("\n\n");
-                    Console.Write($"в файл {pathCsv} конвертировано: {_counter} строк(и). ");
-                    Console.WriteLine();
-
-                    _counter = 0;
                 }
             }
             catch (Exception m)
