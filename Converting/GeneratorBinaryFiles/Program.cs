@@ -14,14 +14,14 @@ namespace GeneratorBinaryFiles
             //присвоение из файла настроек:'PathBinary.settings'.
             string pathBinary = PathBinary.Default.pathBinary;
 
-            Console.SetWindowSize(90, 20);
+            Console.SetWindowSize(100, 20);
 
             try
             {
                 InputValidation inputValidation = new InputValidation();//проверка правильности ввода с клавиатуры.
                 BinaryFiles binaryFiles = new BinaryFiles();//генерация бинарных файлов.          
 
-                binaryFiles.BinaryFilesGener(pathBinary, inputValidation.GetInputValidationKey());
+                binaryFiles.BinaryFilesGenerator(pathBinary, inputValidation.GetInputValidationKey());
             }
             catch (Exception m)
             {

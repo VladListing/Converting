@@ -10,18 +10,17 @@ namespace Converting
     class Program
     {
 
-        // метод возвращает экземпляр одного из двух возможных конвертирующих классов потдерживающих интерфейс 'IConverter'
+        // метод возвращает экземпляр одного из двух 
+        // возможных конвертирующих классов потдерживающих интерфейс 'IConverter'.
         private static IConverter GetConverter(bool revert)
         {
             if (revert)
             {
-                // экземпляр класса , реализует преобразование из бинарного файла в файл с разделителями Csv
-                return new ConverterBinaryToCsv();// создаем экземпляр по слабой ссылке                
+                return new ConverterBinaryToCsv();               
             }
             else
             {
-                //экземпляр класса , реализует преобразование из файл с разделителями Csv в бинарный файл 
-                return new ConverterCsvToBinary();// создаем экземпляр по слабой ссылке
+                return new ConverterCsvToBinary();
             }
         }
         
@@ -29,36 +28,31 @@ namespace Converting
 
         static void Main(string[] args)
         {
-            //путь и имя бинарного файла со структурами, присвоение из файла настроек: 'Path.settings'
+            //путь и имя бинарного файла со структурами, 
+            //присвоение из файла настроек: 'Path.settings'
             string pathBinary = Path.Default.pathBinary;
 
-            //путь и имя создаваемого файла с разделителями, типа *.CSV , присвоение из файла настроек: 'Path.settings'
+            //путь и имя создаваемого файла с разделителями, типа *.CSV ,
+            //присвоение из файла настроек: 'Path.settings'
             string pathCsv = Path.Default.pathCsv;
 
-            //выбираем , создать экземпляр класса преобразующего из бинарного файла в файл с разделителями Csv
+            //(true)преобразование из бинарного файла в файл с разделителями Csv
+            //(false)преобразование из файла Csv в бинарный файл 
             bool revert = true;
 
-            Console.SetWindowSize(90, 20);
+            Console.SetWindowSize(100, 20);
 
-            try
-            {
                 //выбираем тип преобразования
                 IConverter converter = GetConverter(revert);
-
 
                 //создаем задачу     
                 var task = converter.GetConvertAsync(pathBinary, pathCsv);
                 task.Wait();
 
                 Console.WriteLine(new string('_', 29));
-                Console.WriteLine("Состояние задачи: {0}", task.Status);
+                Console.WriteLine($"Состояние задачи: {task.Status}");
                 
-            }
-            catch (Exception m)
-            {
-                Console.WriteLine(m.Message);
-            }
-            Console.ReadLine();
+                Console.ReadLine();
         }
     }
 }

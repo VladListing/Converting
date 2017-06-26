@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 namespace ProcessMapping
 {
     ///<symmary>
-    ///класс 'ProcessMappingGeneration' отображает текуший процента выполнения генерации строк в процентах.
+    ///класс 'ProcessMappingGeneration' отображает текушее выполнения генерации строк в процентах.
     ///<symmary>
      
 
     public class ProcessMappingGeneration : ProcessMappingBase//наследуемся от абстрактного класса
     {
-        //метод 
+        //конструктор класса  'ProcessMappingGeneration'
         public ProcessMappingGeneration(long totalCount) : base(totalCount)
         {
         }
 
-        //метод 'RecalculateFinalValue' пересчитывает текущее количество строк в сгенерированном файле, (тип переопределяющий)
+        //метод 'RecalculateFinalValue' пересчитывает текущее количество строк записанных в файл
         protected override void RecalculateFinalValue()
         {
-            currentValue = counter;
+            _currentValue = _counter;
         }
 
-        // присвоение значения корректирующему коэффициенту (тип переопределяющий)
-        protected override double CorrectionValue
+        // присвоение значения корректирующему коэффициенту 
+        protected override double _correctionValue
         {
             get { return 1.0; }
         }

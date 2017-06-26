@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Converter
 {
     ///<symmary>
-    ///интерфейс 'IConverter' устанавливает методы по конвертации и обромлению в задачу.
+    ///интерфейс 'IConverter' устанавливает методы по конвертации и обрамлению их в фоновую задачу.
     ///<symmary>
 
     public interface IConverter

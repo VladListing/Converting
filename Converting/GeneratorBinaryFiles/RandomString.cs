@@ -13,43 +13,43 @@ namespace GeneratorBinaryFiles
     class RandomString
     {
 
-        Random r = new Random(DateTime.Now.Millisecond);
+        Random random = new Random(DateTime.Now.Millisecond);
 
-        private string sumString = null;// "склеянная строка со случайными значениями по текущей сделке"
-        private int number = 0;         // номер варианта случайной строки
-        private int profit = 0;         // сумма по прибыльной сделке
-        private int loss = 0;           // сумма по убыточной сделке
+        private string _sumString = null;// "склеянная строка со случайными значениями по текущей сделке"
+        private int _number = 0;         // номер варианта случайной строки
+        private int _profit = 0;         // сумма по прибыльной сделке
+        private int _loss = 0;           // сумма по убыточной сделке
 
 
         public string GetCommentRandom()
         {
-            number = r.Next(0, 6);
-            loss = r.Next(-1000, 0);
-            profit = r.Next(0, 10000);
+            _number = random.Next(0, 6);
+            _loss = random.Next(-1000, 0);
+            _profit = random.Next(0, 10000);
 
-            switch (number)
+            switch (_number)
             {
                 case 0:
-                    sumString = "   trade:Sell   result:Profit     " + "   +" + profit + " $";
+                    _sumString = $"   trade:Sell   result:Profit   + { _profit }  $";
                     break;
                 case 1:
-                    sumString = "   trade:Sell   result:Loss           " + loss + " $";
+                    _sumString = $"   trade:Sell   result:Loss       { _loss   }  $";
                     break;
                 case 2:
-                    sumString = "   trade:Bay    result:Profit     " + "  +" + profit + " $";
+                    _sumString = $"   trade:Bay    result:Profit   + { _profit }  $";
                     break;
                 case 3:
-                    sumString = "   trade:Bay    result:Loss          " + loss + " $";
+                    _sumString = $"   trade:Bay    result:Loss       { _loss   }  $";
                     break;
                 case 4:
-                    sumString = "   trade:Bay    result:Stoploss  " + loss + " $";
+                    _sumString = $"   trade:Bay    result:Stoploss   { _loss   }  $";
                     break;
                 case 5:
-                    sumString = "   trade:Sell   result:Stoploss  " + loss + " $";
+                    _sumString = $"   trade:Sell   result:Stoploss   { _loss   }  $";
                     break;
             }
 
-            return sumString;
+            return _sumString;
         }
     }
 }
