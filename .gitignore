@@ -11,7 +11,7 @@
 *.exe
 *.cache
 *.manifest
-*.config
+
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
