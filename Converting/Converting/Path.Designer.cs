@@ -25,7 +25,7 @@ namespace Converting {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\trades.dat")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\trades.dat")]
         public string pathBinary {
             get {
                 return ((string)(this["pathBinary"]));
@@ -37,7 +37,7 @@ namespace Converting {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\trades.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\trades.csv")]
         public string pathCsv {
             get {
                 return ((string)(this["pathCsv"]));

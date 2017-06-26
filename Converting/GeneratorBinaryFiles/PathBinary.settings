@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="pathBinary" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\\trades.dat</Value>
+      <Value Profile="(Default)">C:\\trades.dat</Value>
     </Setting>
   </Settings>
 </SettingsFile>

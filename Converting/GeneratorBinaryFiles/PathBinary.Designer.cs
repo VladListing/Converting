@@ -25,7 +25,7 @@ namespace GeneratorBinaryFiles {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\\\trades.dat")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\trades.dat")]
         public string pathBinary {
             get {
                 return ((string)(this["pathBinary"]));
