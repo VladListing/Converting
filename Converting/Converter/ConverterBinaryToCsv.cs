@@ -49,8 +49,8 @@ namespace Converter
                         //todo: вызов статического метода возвращяющего размер файла
                         var a = ProcessMappingConvertion.GetCount(pathDat);
                         var b = a / _byteToMegabyteKoef;
-                        string sizeFile = b.ToString("#.###");
-
+                        var sizeFile = Math.Round(b, 3);
+                        
                         Console.WriteLine($"Ждите, выполняется конвертация из бинарного файла: {_pathBinary} , размером: {sizeFile} Mb");
                         Console.WriteLine($"в файл с разделителями: {_pathCsv} ");
                         Console.WriteLine();
