@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="pathBinary" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\trades.dat</Value>
+      <Value Profile="(Default)">D:\\trades.dat</Value>
     </Setting>
     <Setting Name="pathCsv" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\trades.csv</Value>
+      <Value Profile="(Default)">D:\\trades.csv</Value>
     </Setting>
   </Settings>
 </SettingsFile>
