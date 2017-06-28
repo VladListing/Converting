@@ -35,7 +35,7 @@ namespace GeneratorBinaryFiles
         }
 
         private string _pathBinaryFiles = null; //путь и имя создаваемого бинарного файла.
-        private long _counter = 0; //счетчик записаных в файл строк.        D:\_LISTING_\GIT\Prod\Converting\Converting\GeneratorBinaryFiles\RandomString.cs
+        private long _counter = 0; //счетчик записаных в файл строк.       
 
         public void BinaryFilesGenerator(string pathBinaryFiles, long quantityLine)
         {
