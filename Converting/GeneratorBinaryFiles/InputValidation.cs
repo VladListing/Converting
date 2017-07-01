@@ -34,8 +34,7 @@ namespace GeneratorBinaryFiles
             while (any.Key != ConsoleKey.Enter)
             {
                 if (Console.KeyAvailable == true)
-                //if (Console.CursorVisible == true)
-                {
+                { 
                       _charNum = (int)Console.ReadKey().KeyChar;
                     
                   if (_charNum >= _zeroChar && _charNum <= _nineChar)
