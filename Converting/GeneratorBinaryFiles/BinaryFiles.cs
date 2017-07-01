@@ -36,6 +36,8 @@ namespace GeneratorBinaryFiles
 
         private string _pathBinaryFiles = null; //путь и имя создаваемого бинарного файла.
         private long _counter = 0; //счетчик записаных в файл строк.       
+        private int a = 0;
+        private int b = 0;
 
         public void BinaryFilesGenerator(string pathBinaryFiles, long quantityLine)
         {
@@ -72,7 +74,18 @@ namespace GeneratorBinaryFiles
                         _counter++;
 
                         //отображение текушего процента выполнения    
-                        //processMapping.ProcessMappingInPercent();
+                        a = processMapping.ProcessMappingInPercent();
+
+                        if (a > b + 5)
+                        {
+                            Console.Write("\r");
+                            Console.Write($"выполнено: {a} % ");
+                            b = a;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 }
 

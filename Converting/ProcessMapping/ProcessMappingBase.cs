@@ -28,6 +28,7 @@ namespace ProcessMapping
         private int _counter1 = 0;           //счетчик к-ва строк после которого производиться перерасчет процента выполнения (обнуляемый)
         protected long _counter = 0;         //счетчик общего количества строк (не обнуляемый)
         protected long _currentValue = 0;    //текущий значение контролируемой величины по конечному файлу (размер или к-во строк)
+        private int _percent = 0; //текуший процента выполнения в формате int
 
         protected abstract double _correctionValue { get; } //свойство при чтении коэффициента корректировки 
 
@@ -64,7 +65,8 @@ namespace ProcessMapping
         }
 
         //метод расчитывающий  текущий процент выполнения 
-        public void ProcessMappingInPercent()
+        //public void ProcessMappingInPercent()
+        public int ProcessMappingInPercent()
         {
             _counter++;
             _counter1++; 
@@ -79,10 +81,12 @@ namespace ProcessMapping
                 {
                     _processPercent = 99;
                 }
-                Console.Write("\r");
-                Console.Write($"выполнено: {Math.Truncate(_processPercent)} % " );
+                //Console.Write("\r");
+                //Console.Write($"выполнено: {Math.Truncate(_processPercent)} % " );
+            _percent = (int)Math.Truncate(_processPercent);
                 _counter1 = 0;
             }
+            return _percent;
         }
 
         //абстрактный метод, присваивает  текущее значение контролируемой величине в конечном файле 
