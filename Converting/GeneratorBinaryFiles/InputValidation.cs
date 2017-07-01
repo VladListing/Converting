@@ -34,25 +34,27 @@ namespace GeneratorBinaryFiles
             while (any.Key != ConsoleKey.Enter)
             {
                 if (Console.KeyAvailable == true)
+                //if (Console.CursorVisible == true)
                 {
-                    _charNum = (int)Console.ReadKey().KeyChar;
-                    if (_charNum >= _zeroChar && _charNum <= _nineChar)
-                    {
-                        _stringsKey += (char)_charNum;
-                        _counter++;
-                    }
-                    else
-                    {
-                        _counter = 0;
-                        _stringsKey = null;
-                        Console.Write("\r");
-                        Console.Write("Ошибка, введите целое положительное число:");
-                        Console.WriteLine();
+                      _charNum = (int)Console.ReadKey().KeyChar;
+                    
+                  if (_charNum >= _zeroChar && _charNum <= _nineChar)
+                      {
+                          _stringsKey += (char)_charNum;
+                          _counter++;
+                      }
+                      else
+                      {
+                          _counter = 0;
+                          _stringsKey = null;
+                          Console.Write("\r");
+                          Console.Write("Ошибка, введите целое положительное число:");
+                          Console.WriteLine();
 
-                        continue;
-                    }
-                    any = Console.ReadKey(true);
-                }
+                          continue;
+                      }
+                         any = Console.ReadKey(true);                   
+                 }                
             }
             if (_counter != 0 && any.Key == ConsoleKey.Enter)
             {
