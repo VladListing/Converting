@@ -28,7 +28,9 @@ namespace Converter
 
         private const double _byteToMegabyteKoef =  1048576.0;//для преобразование из байтов в мегабайты
 
-
+        private int q=0; //процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
+        private int w=0; //промежуточная переменная для определения частоты отображения процента выполнения
+        
         public void Convert(string pathDat, string pathCsv)
         //public Task ConvertAsync(string pathDat, string pathCsv)
         {
@@ -74,8 +76,20 @@ namespace Converter
                             file.WriteLine(";");
                             _counter++;
 
-                            //процент выполнения    
-                            processMapping.ProcessMappingInPercent();
+                            //процент выполнения       
+                            q = processMapping.GetProcessMappingInPercent();
+      
+                            if ( q >  w + 5)
+                            {
+                            Console.Write("\r");
+                            Console.Write($"выполнено: {q} % ");
+                            w = q;
+                            }
+                            else
+                            {
+                            continue;
+                            }
+                       
                         }
                         Console.Write("\r");
                         Console.Write("выполнено: 100 % ");
@@ -98,9 +112,7 @@ namespace Converter
         {
             Task task1 = new Task(() => Convert(srcPath, destPath));
             task1.Start();
-            Console.WriteLine($"Состояние задачи: {task1.Status}");
-            Console.WriteLine(new string('_', 29));
-
+            
             return task1;
         }
     }

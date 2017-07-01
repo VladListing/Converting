@@ -15,7 +15,7 @@ namespace Converter
     public class ConverterCsvToBinary: IConverter
     {
         //метод 'Convert', преобразует файл из формата Csv в бинарный.
-        public void Convert(string srcPath, string destPath)
+        public  void Convert(string srcPath, string destPath)
         {
             throw new System.NotImplementedException();
         }

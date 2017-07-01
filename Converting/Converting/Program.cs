@@ -22,8 +22,7 @@ namespace Converting
             {
                 return new ConverterCsvToBinary();
             }
-        }
-        
+        }   
 
 
         static void Main(string[] args)
@@ -39,7 +38,7 @@ namespace Converting
             //(true)преобразование из бинарного файла в файл с разделителями Csv
             //(false)преобразование из файла Csv в бинарный файл 
             bool revert = true;
-
+            //int w=0;
             Console.SetWindowSize(100, 20);
 
                 //выбираем тип преобразования
@@ -47,6 +46,8 @@ namespace Converting
 
                 //создаем задачу     
                 var task = converter.GetConvertAsync(pathBinary, pathCsv);
+                Console.WriteLine($"Состояние задачи: {task.Status}");
+                Console.WriteLine(new string('_', 29));
                 task.Wait();
 
                 Console.WriteLine(new string('_', 29));

@@ -65,8 +65,7 @@ namespace ProcessMapping
         }
 
         //метод расчитывающий  текущий процент выполнения 
-        //public void ProcessMappingInPercent()
-        public int ProcessMappingInPercent()
+        public int GetProcessMappingInPercent()
         {
             _counter++;
             _counter1++; 
@@ -81,9 +80,8 @@ namespace ProcessMapping
                 {
                     _processPercent = 99;
                 }
-                //Console.Write("\r");
-                //Console.Write($"выполнено: {Math.Truncate(_processPercent)} % " );
-            _percent = (int)Math.Truncate(_processPercent);
+                
+                _percent = (int)Math.Truncate(_processPercent);
                 _counter1 = 0;
             }
             return _percent;
