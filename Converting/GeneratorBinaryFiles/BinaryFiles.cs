@@ -72,7 +72,7 @@ namespace GeneratorBinaryFiles
                         _counter++;
 
                         //отображение текушего процента выполнения    
-                        processMapping.ProcessMappingInPercent();
+                        //processMapping.ProcessMappingInPercent();
                     }
                 }
 
