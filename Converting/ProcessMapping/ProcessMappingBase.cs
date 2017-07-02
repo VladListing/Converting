@@ -80,8 +80,8 @@ namespace ProcessMapping
                     _processPercent = 99;
                 }
                 Console.Write("\r");
-                Console.Write($"выполнено: {Math.Truncate(_processPercent)} % " );
-                _counter1 = 0;
+                Console.Write($"выполнено: {Math.Truncate(_processPercent)} % " );ё
+                 _counter1 = 0;
             }
         }
 
