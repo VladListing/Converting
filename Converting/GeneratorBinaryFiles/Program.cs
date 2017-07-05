@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeneratorBinaryFiles
 {
+    // Hello Aleksey
     class Program
     {
         static void Main(string[] args)
