@@ -4,40 +4,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using CommandLine;
+
 
 namespace GeneratorBinaryFiles
 {
+    class InputArguments
+    {
+        [Option('o', "pathBinaryFile", Required = true)]
+        public string pathBinaryFile { get; set; }
+        [Option('n', "quantityLine", Required = true)]
+        public string quantityLine { get; set; }
+    }
     
-
-
-
-
-
-
     class Program
     {
         static void Main(string[] args)
         {
+            var inputArguments = new InputArguments();
+            if (Parser.Default.ParseArguments(args, inputArguments))
+            {                                
+            }
+            else 
+            {
+                Console.WriteLine("Недопустимые входные аргументы. Нажмите любую клавишу для выхода");
+                Console.ReadLine();
+                return;
+            }            
+                           
             //путь и имя создаваемого бинарного файла,  
-            //присвоение из файла настроек:'PathBinary.settings'.
-            string pathBinary = PathBinary.Default.pathBinary;
+            string partBinaryFile = inputArguments.pathBinaryFile;
 
-            long quantityLine = 0;//количество строк в создаваемом файле.
-
+            //количество строк в создаваемом файле.
+            long quantityLine = Convert.ToInt64(inputArguments.quantityLine);
+            
             Console.SetWindowSize(100, 20);
 
             try
             {
-                //проверка правильности ввода с клавиатуры.
-                InputValidation inputValidation = new InputValidation();
-                quantityLine = inputValidation.GetInputValidationKey();
-
                 //отображение текущего процента выполения генерации.
                 ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
 
                 //генерация бинарного файла.
                 BinaryFiles binaryFiles = new BinaryFiles(processMapping);
-                binaryFiles.BinaryFilesGenerator(pathBinary, quantityLine);
+                binaryFiles.BinaryFilesGenerator(partBinaryFile, quantityLine);
             }
             catch (Exception m)
             {
