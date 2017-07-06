@@ -13,7 +13,7 @@ namespace GeneratorBinaryFiles
     /// класс 'BinaryFiles' генерирует бинарные файлы с заданым количеством строк, заданной структуры.
     ///<symmary>
 
-    class BinaryFiles
+    public class BinaryFiles
     {
         //описание структуры 'TradeRecord'.
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -35,26 +35,33 @@ namespace GeneratorBinaryFiles
         }
 
         private string _pathBinaryFiles = null; //путь и имя создаваемого бинарного файла.
-        private long _counter = 0; //счетчик записаных в файл строк.       
+        private long _counter = 0; //счетчик записаных в файл строк.
+        private ProcessMappingBase _processMapping;//текущий процент выполнения создания файла.       
         private int a = 0;//процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
-        private int b = 0;//промежуточная переменная для определения частоты отображения процента выполнения
-
-        public void BinaryFilesGenerator(string pathBinaryFiles, long quantityLine)
+        private int b = 0;//промежуточная переменная для определения частоты отображения процента выполнения.
+         
+        //конструктор пользовательский, класса 'BinaryFiles'
+        public BinaryFiles(ProcessMappingBase processMapping)
         {
-            _pathBinaryFiles = pathBinaryFiles;
+            _processMapping = processMapping;
+        }
+
+        public void BinaryFilesGenerator(string pathBinaryFiles, long quantityLine )
+        {
+            _pathBinaryFiles = pathBinaryFiles;           
+            RandomString randoomString = new RandomString();
 
             Console.SetWindowSize(100, 20);
-
             Console.WriteLine("\n\n");
             Console.WriteLine($"Ждите, выполняется запись в  файл: {pathBinaryFiles} " );
             Console.WriteLine();
-
-            RandomString randoomString = new RandomString();
+            
 
             try
             {
                 //todo: тут иемеет смысл передать только один раз в конструктор quantityLine
-                ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
+                //ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
+
 
                 //todo: это тут не надо, как мы можем обойтись без этой операции
                 File.WriteAllText(pathBinaryFiles, ""); //очистка содержимого файла (в случае если файл уже существует).
@@ -74,7 +81,7 @@ namespace GeneratorBinaryFiles
                         _counter++;
 
                         //отображение текушего процента выполнения    
-                        a = processMapping.GetProcessMappingInPercent();
+                        a = _processMapping.GetProcessMappingInPercent();
 
                         if (a > b + 5)
                         {

@@ -16,7 +16,7 @@ namespace Converter
         void Convert(string srcPath, string destPath);
 
         //Метод 'GetConvertAsync' возвращает фоновую задачу 
-        Task GetConvertAsync(string srcPath, string destPath);
+        Task ConvertAsync(string srcPath, string destPath);
 
     }
 }

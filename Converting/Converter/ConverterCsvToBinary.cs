@@ -21,7 +21,7 @@ namespace Converter
         }
 
         //метод 'GetConvertAsync' обрамляет в фоновую задачу
-        public Task GetConvertAsync(string srcPath, string destPath)
+        public Task ConvertAsync(string srcPath, string destPath)
         {
             throw new System.NotImplementedException();
         }

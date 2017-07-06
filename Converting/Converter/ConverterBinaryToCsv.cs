@@ -30,9 +30,17 @@ namespace Converter
 
         private int q=0; //процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
         private int w=0; //промежуточная переменная для определения частоты отображения процента выполнения
+
+        private ProcessMappingBase _processMapping; //процент выполнения конвертации.
         
-        public void Convert(string pathDat, string pathCsv)
-        //public Task ConvertAsync(string pathDat, string pathCsv)
+        //конструктор, класса 'ConverterBinaryToCsv'
+        public ConverterBinaryToCsv(ProcessMappingBase processMapping)
+        {
+            _processMapping = processMapping;
+        }
+
+
+        public void Convert(string pathDat, string pathCsv)        
         {
             try
             {
@@ -43,12 +51,12 @@ namespace Converter
                 //todo: вот консоль тут уже совершенно ни при чём, а если мы решим использовать библиотеку в оконном приложении ?
                 Console.SetWindowSize(100, 20);
 
-                ProcessMappingBase processMapping = new ProcessMappingConvertion(pathDat, pathCsv);
+                //ProcessMappingBase processMapping = new ProcessMappingConvertion(pathDat, pathCsv);
                 using (BinaryReader reader = new BinaryReader(File.Open(_pathBinary, FileMode.Open), Encoding.ASCII))
                 {
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(_pathCsv))
                     {
-                        //todo: вызов статического метода возвращяющего размер файла
+                        //вызов статического метода возвращяющего размер файла
                         var a = ProcessMappingConvertion.GetCount(pathDat);
                         var b = a / _byteToMegabyteKoef;
                         var sizeFile = Math.Round(b, 3);
@@ -77,7 +85,7 @@ namespace Converter
                             _counter++;
 
                             //процент выполнения       
-                            q = processMapping.GetProcessMappingInPercent();
+                            q = _processMapping.GetProcessMappingInPercent();
       
                             if ( q >  w + 5)
                             {
@@ -108,7 +116,7 @@ namespace Converter
         }
 
         //Метод возвращает  асинхронную задачу
-        public Task GetConvertAsync(string srcPath, string destPath)
+        public Task ConvertAsync(string srcPath, string destPath)
         {
             Task task1 = new Task(() => Convert(srcPath, destPath));
             task1.Start();
