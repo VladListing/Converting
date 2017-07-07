@@ -12,9 +12,9 @@ namespace GeneratorBinaryFiles
 {
     class InputArguments
     {
-        [Option('o', "pathBinaryFile", Required = true)]
+        [Option('p', "pathBinaryFile", Required = true)]
         public string pathBinaryFile { get; set; }
-        [Option('n', "quantityLine", Required = true)]
+        [Option('q', "quantityLine", Required = true)]
         public string quantityLine { get; set; }
     }
     
@@ -22,13 +22,25 @@ namespace GeneratorBinaryFiles
     {
         static void Main(string[] args)
         {
-            var inputArguments = new InputArguments();
-            if (Parser.Default.ParseArguments(args, inputArguments))
-            {                                
-            }
-            else 
+            try
             {
-                Console.WriteLine("Недопустимые входные аргументы. Нажмите любую клавишу для выхода");
+                var inputArguments = new InputArguments();
+
+            //проверка правильности ввода входных аргументов
+            if (Parser.Default.ParseArguments(args, inputArguments))
+            {
+                Console.WriteLine("InputArguments: ");
+                Console.WriteLine($"pathBinaryFile  {inputArguments.pathBinaryFile}");
+                Console.WriteLine($"quantityLine    {inputArguments.quantityLine}");
+                Console.WriteLine("\n");
+            }
+            else
+            {
+                Console.WriteLine("InputArguments: ");
+                Console.WriteLine($"pathBinaryFile  {inputArguments.pathBinaryFile}");
+                Console.WriteLine($"quantityLine    {inputArguments.quantityLine}");
+                Console.WriteLine("\n");
+                Console.WriteLine("Недопустимые входные аргументы. Нажмите клавишу 'Enter' для выхода");
                 Console.ReadLine();
                 return;
             }            
@@ -41,8 +53,7 @@ namespace GeneratorBinaryFiles
             
             Console.SetWindowSize(100, 20);
 
-            try
-            {
+            
                 //отображение текущего процента выполения генерации.
                 ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
 

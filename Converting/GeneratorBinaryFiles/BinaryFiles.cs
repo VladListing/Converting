@@ -52,7 +52,6 @@ namespace GeneratorBinaryFiles
             RandomString randoomString = new RandomString();
 
             Console.SetWindowSize(100, 20);
-            Console.WriteLine("\n");
             Console.WriteLine($"Ждите, выполняется запись:  {quantityLine} строк(и)  в файл: {pathBinaryFiles} " );
             Console.WriteLine();            
 

@@ -23,9 +23,10 @@ namespace ProcessMapping
             _pathToFinalFile = pathToFinalFile;
         }
 
-
+        
+        
         //статический метод 'GetCount', возвращает текущий размер файла
-        public static  long GetCount(string pathToFile)
+        public static long GetCount(string pathToFile)
         {
             var fi = new FileInfo(pathToFile);
             return fi.Length;
@@ -42,5 +43,6 @@ namespace ProcessMapping
         {
             get { return 1.1; }
         }
+        
     }
 }

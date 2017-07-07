@@ -1,4 +1,5 @@
-﻿using Converter;
+﻿using CommandLine;
+using Converter;
 using ProcessMapping;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,18 @@ using System.Threading.Tasks;
 
 namespace Converting
 {
-    class Program
+    class InputArguments
     {
-          
-        private static string pathBinary;
-        private static string pathCsv;
+        [Option('b',"pathBinaryFile", Required = true)]
+        public string pathBinaryFile { get; set; }
+        [Option('c',"pathCsvFile", Required = true)]
+        public string pathCsvFile { get; set; }
+    }
+
+    class Program
+    {          
+        private static string pathBinaryFile;
+        private static string pathCsvFile;
         private static ProcessMappingBase processMapping=null;
 
         // метод возвращает экземпляр одного из двух 
@@ -21,7 +29,7 @@ namespace Converting
         {
             if (revert)
             {
-                return new ConverterBinaryToCsv(processMapping = new ProcessMappingConvertion(pathBinary, pathCsv));               
+                return new ConverterBinaryToCsv(processMapping = new ProcessMappingConvertion(pathBinaryFile, pathCsvFile));               
             }
             else
             {
@@ -29,22 +37,40 @@ namespace Converting
             }
         }   
 
-
         static void Main(string[] args)
         {
-            //путь и имя бинарного файла со структурами, 
-            //присвоение из файла настроек: 'Path.settings'
-            pathBinary = Path.Default.pathBinary;
+            try
+            {
+                var inputArguments = new InputArguments();
 
-            //путь и имя создаваемого файла с разделителями, типа *.CSV ,
-            //присвоение из файла настроек: 'Path.settings'
-            pathCsv = Path.Default.pathCsv;
+                //проверка правильности ввода входных аргументов
+                if (Parser.Default.ParseArguments(args, inputArguments))
+                {
+                    Console.WriteLine("InputArguments: ");
+                    Console.WriteLine($"pathBinaryFile  {inputArguments.pathBinaryFile}");
+                    Console.WriteLine($"pathCsvFile     {inputArguments.pathCsvFile}");
+                    Console.WriteLine("\n");
+                }
+                else
+                {
+                    Console.WriteLine("InputArguments: ");
+                    Console.WriteLine($"pathBinaryFile  {inputArguments.pathBinaryFile}");
+                    Console.WriteLine($"pathCsvFile     {inputArguments.pathCsvFile}");
+                    Console.WriteLine("\n");
+                    Console.WriteLine("Недопустимые входные аргументы. Нажмите клавишу 'Enter' для выхода");
+                    Console.ReadLine();
+                    return;
+                }
 
-            //(true)преобразование из бинарного файла в файл с разделителями Csv
-            //(false)преобразование из файла Csv в бинарный файл 
-            bool revert = true;
-                       
-            //ProcessMappingBase processMapping = new ProcessMappingConvertion(pathBinary, pathCsv);
+                //путь и имя бинарного файла 
+                pathBinaryFile = inputArguments.pathBinaryFile;
+
+                //путь и имя создаваемого файла с разделителями, типа *.CSV ,
+                pathCsvFile = inputArguments.pathCsvFile;
+
+                //-(true)-преобразование из бинарного файла в файл Csv
+                //-(false)-преобразование из файла Csv в бинарный файл 
+                bool revert = true;
 
                 Console.SetWindowSize(100, 20);
 
@@ -52,15 +78,23 @@ namespace Converting
                 IConverter converter = GetConverter(revert);
 
                 //создаем задачу     
-                var task = converter.ConvertAsync(pathBinary, pathCsv);
+                var task = converter.ConvertAsync(pathBinaryFile, pathCsvFile);
                 Console.WriteLine($"Состояние задачи: {task.Status}");
                 Console.WriteLine(new string('_', 29));
                 task.Wait();
 
                 Console.WriteLine(new string('_', 29));
                 Console.WriteLine($"Состояние задачи: {task.Status}");
-                
+
                 Console.ReadLine();
+
+            }
+            catch (Exception m)
+            {
+                Console.WriteLine(m.Message);
+            }
+            Console.ReadLine();
+
         }
     }
 }
