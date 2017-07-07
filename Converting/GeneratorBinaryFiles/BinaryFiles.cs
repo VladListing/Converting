@@ -75,6 +75,7 @@ namespace GeneratorBinaryFiles
                         //отображение текушего процента выполнения    
                         a = _processMapping.GetProcessMappingInPercent();
 
+                        //вывожу на экран только при увеличении более чем на 5 %
                         if (a > b + 5)
                         {
                             Console.Write("\r");
