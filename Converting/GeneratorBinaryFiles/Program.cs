@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using CommandLine;
-
+using System.Runtime.InteropServices;
 
 namespace GeneratorBinaryFiles
 {
@@ -57,6 +57,7 @@ namespace GeneratorBinaryFiles
                 //отображение текущего процента выполения генерации.
                 ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
 
+                
                 //генерация бинарного файла.
                 BinaryFiles binaryFiles = new BinaryFiles(processMapping);
                 binaryFiles.BinaryFilesGenerator(partBinaryFile, quantityLine);

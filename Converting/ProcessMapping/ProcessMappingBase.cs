@@ -21,7 +21,7 @@ namespace ProcessMapping
         protected long _currentValue = 0;    //текущий значение контролируемой величины по конечному файлу (размер или к-во строк)
         private int _percent = 0;            //текуший процента выполнения в формате int
 
-        protected abstract double _correctionValue { get; } //свойство при чтении коэффициента корректировки 
+        protected abstract double _correctionValue { get; } //свойство (Автоматическое) при чтении коэффициента корректировки 
 
         //пользовательский конструктор aбстрактного класса
         protected ProcessMappingBase(long totalCount)
