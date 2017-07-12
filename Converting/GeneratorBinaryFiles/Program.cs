@@ -1,12 +1,11 @@
 ﻿using ProcessMapping;
 using System;
-using static GeneratorBinaryFiles.InputArguments;
+
 
 
 
 namespace GeneratorBinaryFiles
 {
-
     class Program
     {
         static void Main(string[] args)
@@ -15,7 +14,7 @@ namespace GeneratorBinaryFiles
             {
             //инициализируем и проверяем входные аргументы.
             InputArguments inputArguments = new InputArguments();
-            Options verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);
+            var verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);
 
             //заданное количество строк в создаваемом бинарном файле.
             long quantityLine = Convert.ToInt64(verifiedInputArguments.quantityLine);
@@ -25,12 +24,13 @@ namespace GeneratorBinaryFiles
             
             Console.SetWindowSize(100, 20);
             
-                //отображение текущего процента выполения генерации.
-                ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
+            //отображение текущего процента выполения генерации.
+            ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
                 
-                //генерация бинарного файла.
-                BinaryFiles binaryFiles = new BinaryFiles(processMapping);
-                binaryFiles.BinaryFilesGenerator(partBinaryFile, quantityLine);
+            //генерация бинарного файла.
+            BinaryFiles binaryFiles = new BinaryFiles(processMapping);
+            binaryFiles.BinaryFilesGenerator(partBinaryFile, quantityLine);
+
             }
             catch (Exception m)
             {
