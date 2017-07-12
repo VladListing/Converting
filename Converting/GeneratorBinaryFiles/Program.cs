@@ -1,62 +1,32 @@
 ﻿using ProcessMapping;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using CommandLine;
-using System.Runtime.InteropServices;
+using static GeneratorBinaryFiles.InputArguments;
+
+
 
 namespace GeneratorBinaryFiles
 {
-    class InputArguments
-    {
-        [Option('p', "pathBinaryFile", Required = true)]
-        public string pathBinaryFile { get; set; }
-        [Option('q', "quantityLine", Required = true)]
-        public string quantityLine { get; set; }
-    }
-    
+
     class Program
     {
         static void Main(string[] args)
         {
             try
             {
-                var inputArguments = new InputArguments();
+            //инициализируем и проверяем входные аргументы.
+            InputArguments inputArguments = new InputArguments();
+            Options verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);
 
-            //проверка правильности ввода входных аргументов
-            if (Parser.Default.ParseArguments(args, inputArguments))
-            {
-                Console.WriteLine("InputArguments: ");
-                Console.WriteLine($"pathBinaryFile  {inputArguments.pathBinaryFile}");
-                Console.WriteLine($"quantityLine    {inputArguments.quantityLine}");
-                Console.WriteLine("\n");
-            }
-            else
-            {
-                Console.WriteLine("InputArguments: ");
-                Console.WriteLine($"pathBinaryFile  {inputArguments.pathBinaryFile}");
-                Console.WriteLine($"quantityLine    {inputArguments.quantityLine}");
-                Console.WriteLine("\n");
-                Console.WriteLine("Недопустимые входные аргументы. Нажмите клавишу 'Enter' для выхода");
-                Console.ReadLine();
-                return;
-            }            
-                           
-            //путь и имя создаваемого бинарного файла,  
-            string partBinaryFile = inputArguments.pathBinaryFile;
+            //заданное количество строк в создаваемом бинарном файле.
+            long quantityLine = Convert.ToInt64(verifiedInputArguments.quantityLine);
 
-            //количество строк в создаваемом файле.
-            long quantityLine = Convert.ToInt64(inputArguments.quantityLine);
+            //путь и имя создаваемого бинарного файла.  
+            string partBinaryFile = verifiedInputArguments.pathBinaryFile;            
             
             Console.SetWindowSize(100, 20);
-
             
                 //отображение текущего процента выполения генерации.
                 ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
-
                 
                 //генерация бинарного файла.
                 BinaryFiles binaryFiles = new BinaryFiles(processMapping);
