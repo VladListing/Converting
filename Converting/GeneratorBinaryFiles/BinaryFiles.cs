@@ -37,8 +37,8 @@ namespace GeneratorBinaryFiles
         private string _pathBinaryFiles = null; //путь и имя создаваемого бинарного файла.
         private long _counter = 0; //счетчик записаных в файл строк.
         private ProcessMappingBase _processMapping;//текущий процент выполнения создания файла.       
-        private int a = 0;//процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
-        private int b = 0;//промежуточная переменная для определения частоты отображения процента выполнения.
+        private int _currentPercentage = 0;//текущий процент выполнения 
+        private int _previousPercentage = 0;//предыдущий процент выполнения.
          
         //конструктор пользовательский, класса 'BinaryFiles'
         public BinaryFiles(ProcessMappingBase processMapping)
@@ -73,14 +73,14 @@ namespace GeneratorBinaryFiles
                         _counter++;
 
                         //отображение текушего процента выполнения    
-                        a = _processMapping.GetProcessMappingInPercent();
+                        _currentPercentage = _processMapping.GetProcessMappingInPercent();
 
-                        //вывожу на экран только при увеличении более чем на 5 %
-                        if (a > b + 5)
+                        //вывод на экран только при увеличении более чем на 5 %
+                        if (_currentPercentage > _previousPercentage + 5)
                         {
                             Console.Write("\r");
-                            Console.Write($"выполнено: {a} % ");
-                            b = a;
+                            Console.Write($"выполнено: {_currentPercentage} % ");
+                            _previousPercentage = _currentPercentage;
                         }
                         else
                         {

@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Converting
 {
+    ///<symmary>
+    /// класс 'InputsArguments' инициализирует и проверяет входные аргументы.
+    ///<symmary>
+    
     public class InputArguments
     {
         //Аргументы

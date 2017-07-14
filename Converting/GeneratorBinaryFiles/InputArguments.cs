@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace GeneratorBinaryFiles
 {
+    ///<symmary>
+    /// класс 'InputsArguments' инициализирует и проверяет входные аргументы.
+    ///<symmary>
+    
     public class InputArguments
     {
         //Аргументы
@@ -15,7 +19,7 @@ namespace GeneratorBinaryFiles
             [Option('p', "pathBinaryFile", Required = true)]
             public string pathBinaryFile { get; set; }
             [Option('q', "quantityLine", Required = true)]
-            public string quantityLine { get; set; }
+            public int quantityLine { get; set; }
         }
 
         //метод. возвращает входные аргументы после проверки  

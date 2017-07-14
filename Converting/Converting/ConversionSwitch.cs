@@ -9,6 +9,13 @@ using static Converting.InputArguments;
 
 namespace Converting
 {
+    ///<symmary>
+    /// класс 'ConversionSwitch' организует выбор типа преобразования.
+    /// параметр'revert'выбирает тип преобразования:
+    ///-(true)-преобразование из бинарного файла в файл Csv;
+    ///-(false)-преобразование из файла Csv в бинарный файл. 
+    ///<symmary>
+
     public class ConversionSwitch
     {       
         private  ProcessMappingBase processMapping = null;
