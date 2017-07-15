@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Generator
 {
     ///<symmary>
-    /// класс 'BinaryFiles' генерирует бинарные файлы с заданым количеством строк, заданной структуры.
+    /// класс 'Binary' генерирует бинарные файлы с заданым количеством строк, заданной структуры.
     ///<symmary>
 
     public class Binary
@@ -38,13 +38,31 @@ namespace Generator
         private long _counter = 0; //счетчик записаных в файл строк.
         private ProcessMappingBase _processMapping;//текущий процент выполнения создания файла.       
         private int _currentPercentage = 0;//текущий процент выполнения 
-        private int _previousPercentage = 0;//предыдущий процент выполнения.
-         
+        private int _previousPercentage = 0;//предыдущий процент выполнения.       
+
+
         //конструктор пользовательский, класса 'BinaryFiles'
         public Binary(ProcessMappingBase processMapping)
         {
             _processMapping = processMapping;
         }
+
+
+        public void DisplayPercentage(int currentPercentage)
+        {
+            _currentPercentage = currentPercentage;
+
+            if (_currentPercentage > _previousPercentage + 5)
+            {
+                Console.Write("\r");
+                Console.Write($"выполнено: {_currentPercentage} % ");
+                _previousPercentage = _currentPercentage;
+            }
+            else
+            {
+            }
+        }
+
 
         public void GeneratingBinaryFile(string pathBinaryFiles, long quantityLine )
         {
@@ -57,7 +75,7 @@ namespace Generator
 
             try
             {                
-                File.WriteAllText(pathBinaryFiles, ""); //очистка содержимого файла (в случае если файл уже существует).
+                File.WriteAllText(pathBinaryFiles, null); //очистка содержимого файла (в случае если файл уже существует).
 
                 using (var writer = new BinaryWriter(File.Open(pathBinaryFiles, FileMode.Append, FileAccess.Write)))
                 {
@@ -72,20 +90,11 @@ namespace Generator
 
                         _counter++;
 
-                        //отображение текушего процента выполнения    
+                        //расчет текушего процента выполнения    
                         _currentPercentage = _processMapping.GetProcessMappingInPercent();
 
-                        //вывод на экран только при увеличении более чем на 5 %
-                        if (_currentPercentage > _previousPercentage + 5)
-                        {
-                            Console.Write("\r");
-                            Console.Write($"выполнено: {_currentPercentage} % ");
-                            _previousPercentage = _currentPercentage;
-                        }
-                        else
-                        {
-                            continue;
-                        }
+                        //отображение текущего процента выполнения
+                        DisplayPercentage(_currentPercentage);
                     }
                 }
 
