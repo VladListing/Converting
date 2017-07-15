@@ -4,7 +4,7 @@ using System;
 
 
 
-namespace GeneratorBinaryFiles
+namespace Generator
 {
     class Program
     {
@@ -28,8 +28,8 @@ namespace GeneratorBinaryFiles
             ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
                 
             //генерация бинарного файла.
-            BinaryFiles binaryFiles = new BinaryFiles(processMapping);
-            binaryFiles.BinaryFilesGenerator(partBinaryFile, quantityLine);
+            Binary binaryFiles = new Binary(processMapping);
+            binaryFiles.GeneratingBinaryFile(partBinaryFile, quantityLine);
 
             }
             catch (Exception m)

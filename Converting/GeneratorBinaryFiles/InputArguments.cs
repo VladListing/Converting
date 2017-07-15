@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneratorBinaryFiles
+namespace Generator
 {
     ///<symmary>
     /// класс 'InputsArguments' инициализирует и проверяет входные аргументы.

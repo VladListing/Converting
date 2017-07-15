@@ -7,13 +7,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneratorBinaryFiles
+namespace Generator
 {
     ///<symmary>
     /// класс 'BinaryFiles' генерирует бинарные файлы с заданым количеством строк, заданной структуры.
     ///<symmary>
 
-    public class BinaryFiles
+    public class Binary
     {
         //описание структуры 'TradeRecord'.
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -41,19 +41,19 @@ namespace GeneratorBinaryFiles
         private int _previousPercentage = 0;//предыдущий процент выполнения.
          
         //конструктор пользовательский, класса 'BinaryFiles'
-        public BinaryFiles(ProcessMappingBase processMapping)
+        public Binary(ProcessMappingBase processMapping)
         {
             _processMapping = processMapping;
         }
 
-        public void BinaryFilesGenerator(string pathBinaryFiles, long quantityLine )
+        public void GeneratingBinaryFile(string pathBinaryFiles, long quantityLine )
         {
-            _pathBinaryFiles = pathBinaryFiles;           
-            RandomString randoomString = new RandomString();
-
             Console.SetWindowSize(100, 20);
             Console.WriteLine($"Ждите, выполняется запись:  {quantityLine} строк(и)  в файл: {pathBinaryFiles} " );
-            Console.WriteLine();            
+            Console.WriteLine();
+
+            _pathBinaryFiles = pathBinaryFiles;
+            RandomString randoomString = new RandomString();
 
             try
             {                

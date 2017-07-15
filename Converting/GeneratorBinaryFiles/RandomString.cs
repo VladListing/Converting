@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneratorBinaryFiles
+namespace Generator
 {
     ///<symmary>
     ///класс 'RandomString' заполняем столбец 'коментарий' случайными значениями

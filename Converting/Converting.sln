@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "Converter\Conv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessMapping", "ProcessMapping\ProcessMapping.csproj", "{12A767C8-BC27-4194-9DFA-8E752E8AFC06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorBinaryFiles", "GeneratorBinaryFiles\GeneratorBinaryFiles.csproj", "{18A9C35E-8AE6-4824-AF02-3BBFA56A8235}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "GeneratorBinaryFiles\Generator.csproj", "{18A9C35E-8AE6-4824-AF02-3BBFA56A8235}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
