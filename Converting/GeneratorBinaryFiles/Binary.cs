@@ -47,11 +47,10 @@ namespace Generator
             _processMapping = processMapping;
         }
 
-
+        //метод.отображение текущего процента выполнения
         public void DisplayPercentage(int currentPercentage)
         {
             _currentPercentage = currentPercentage;
-
             if (_currentPercentage > _previousPercentage + 5)
             {
                 Console.Write("\r");
@@ -63,7 +62,7 @@ namespace Generator
             }
         }
 
-
+        //метод. создание бинарного файла
         public void GeneratingBinaryFile(string pathBinaryFiles, long quantityLine )
         {
             Console.SetWindowSize(100, 20);
@@ -79,21 +78,16 @@ namespace Generator
 
                 using (var writer = new BinaryWriter(File.Open(pathBinaryFiles, FileMode.Append, FileAccess.Write)))
                 {
-                    for (int i = 0; i < quantityLine; i++)
-                    {                        
+                    for (int i = 0; i < quantityLine; i++)                    {                        
                         TradeRecord trade = new TradeRecord(0 + i, 777, 640 + i, randoomString.GetCommentRandom());
-
                         writer.Write(trade.id);
                         writer.Write(trade.account);
                         writer.Write(trade.volume);
                         writer.Write(trade.comment);
-
                         _counter++;
 
                         //расчет текушего процента выполнения    
-                        _currentPercentage = _processMapping.GetProcessMappingInPercent();
-
-                        //отображение текущего процента выполнения
+                        _currentPercentage = _processMapping.GetProcessMappingInPercent();                        
                         DisplayPercentage(_currentPercentage);
                     }
                 }
