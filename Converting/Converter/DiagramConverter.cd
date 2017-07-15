@@ -17,7 +17,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Converter.IConverter">
-    <Position X="1.5" Y="1.75" Width="1.75" />
+    <Position X="1.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IConverter.cs</FileName>

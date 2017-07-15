@@ -10,7 +10,7 @@ namespace Converter
 {
     /// <summary>
     /// класс 'ConverterBinaryToCsv' преобразует файл из бинарного формата в Csv ,
-    /// а так же обрамляет в фоновую задачу.
+    /// а так же обрамляет процесс в фоновую задачу.
     /// </summary>
 
 
@@ -28,7 +28,7 @@ namespace Converter
 
         private const double _byteToMegabyteKoef =  1048576.0;//для преобразование из байтов в мегабайты
 
-        private int q=0; //процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
+        private int _currentPercentage=0; //процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
         private int w=0; //промежуточная переменная для определения частоты отображения процента выполнения
 
         private ProcessMappingBase _processMapping; //процент выполнения конвертации.
@@ -85,13 +85,13 @@ namespace Converter
                             _counter++;
 
                             //процент выполнения       
-                            q = _processMapping.GetProcessMappingInPercent();
+                            _currentPercentage = _processMapping.GetProcessMappingInPercent();
       
-                            if ( q >  w + 5)
+                            if ( _currentPercentage >  w + 5)
                             {
                             Console.Write("\r");
-                            Console.Write($"выполнено: {q} % ");
-                            w = q;
+                            Console.Write($"выполнено: {_currentPercentage} % ");
+                            w = _currentPercentage;
                             }
                             else
                             {
