@@ -19,6 +19,7 @@ namespace Converter
         private string _pathBinary = null; //путь и имя исходного бинарного файла
         private string _pathCsv = null;    //путь и имя конечного Csv файла
 
+        //реализация 
         private int _id = 0;            //колонка "id"
         private int _account = 0;       //колонка "account"
         private double _volume = 0.0;   //колонка "volume"
@@ -26,13 +27,14 @@ namespace Converter
 
         private int _counter = 0;       //счетчик записаных строк
 
-        private const double _byteToMegabyteKoef =  1048576.0;//для преобразование из байтов в мегабайты
+        private const double _byteToMegabyteKoef =  1048576.0;//для преобразование из байтов в мегабайты.
 
-        private int _currentPercentage=0; //процент выполнения возвращаемый методом 'GetProcessMappingInPercent' 
-        private int w=0; //промежуточная переменная для определения частоты отображения процента выполнения
-
-        private ProcessMappingBase _processMapping; //процент выполнения конвертации.
+        private int _currentPercentage=0; //текущий процент выполнения. 
         
+
+        private ProcessMappingBase _processMapping; //расчет процента выполнения конвертации.
+        private int _previousPercentage;
+
         //конструктор, класса 'ConverterBinaryToCsv'
         public ConverterBinaryToCsv(ProcessMappingBase processMapping)
         {
@@ -60,8 +62,9 @@ namespace Converter
                         var a = ProcessMappingConvertion.GetCount(pathDat);
                         var b = a / _byteToMegabyteKoef;
                         var sizeFile = Math.Round(b, 3);
-                        
-                        Console.WriteLine($"Ждите, выполняется конвертация из бинарного файла: {_pathBinary} , размером: {sizeFile} Mb");
+                        var w = 0; //промежуточный процент выполнения.
+
+        Console.WriteLine($"Ждите, выполняется конвертация из бинарного файла: {_pathBinary} , размером: {sizeFile} Mb");
                         Console.WriteLine($"в файл с разделителями: {_pathCsv} ");
                         Console.WriteLine();
 
@@ -91,7 +94,7 @@ namespace Converter
                             {
                             Console.Write("\r");
                             Console.Write($"выполнено: {_currentPercentage} % ");
-                            w = _currentPercentage;
+                                _previousPercentage = _currentPercentage;
                             }
                             else
                             {
