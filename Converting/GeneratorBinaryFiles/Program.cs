@@ -12,7 +12,7 @@ namespace Generator
         {
             try
             {
-            //инициализируем и проверяем входные аргументы.
+            //инициализация и проверка входных аргументов.
             InputArguments inputArguments = new InputArguments();
             var verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);
 
@@ -24,7 +24,7 @@ namespace Generator
             
             Console.SetWindowSize(100, 20);
             
-            //отображение текущего процента выполения генерации.
+            //отображение текущего процента выполения.
             ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
                 
             //генерация бинарного файла.

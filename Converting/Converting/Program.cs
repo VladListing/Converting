@@ -15,20 +15,20 @@ namespace Converting
         {
             try
             {
-                //инициализируем и проверяем входные аргументы.
+                //инициализация и проверка входных аргументов.
                 InputArguments inputArguments = new InputArguments();
                 var verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);                
                 
                 Console.SetWindowSize(100, 20);
 
-                //'revert'выбираем тип преобразования:
+                //'revert'выбор типа преобразования:
                 //-(true)-преобразование из бинарного файла в файл Csv;
                 //-(false)-преобразование из файла Csv в бинарный файл. 
                 bool revert = true;
                 ConversionSwitch conversionSwitch = new ConversionSwitch();
                 IConverter converter = conversionSwitch.GetConverter(verifiedInputArguments.pathBinaryFile, verifiedInputArguments.pathCsvFile, revert);
 
-                //создаем задачу.     
+                //задача.     
                 var task = converter.ConvertAsync(verifiedInputArguments.pathBinaryFile, verifiedInputArguments.pathCsvFile);
                 Console.WriteLine($"Состояние задачи: {task.Status}");
                 Console.WriteLine(new string('_', 29));
