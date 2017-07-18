@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConversionSwitch.cs" />
+    <Compile Include="ConverterBinaryToCsv.cs" />
+    <Compile Include="ConverterCsvToBinary.cs" />
+    <Compile Include="IConverter.cs" />
     <Compile Include="InputArguments.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,10 +61,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Converter\Converter.csproj">
-      <Project>{07836081-0D88-485C-B3E1-FF35E884867E}</Project>
-      <Name>Converter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProcessMapping\ProcessMapping.csproj">
       <Project>{12A767C8-BC27-4194-9DFA-8E752E8AFC06}</Project>
       <Name>ProcessMapping</Name>

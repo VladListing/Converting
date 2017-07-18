@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Converter
+namespace Converting
 {
     /// <summary>
     /// класс 'ConverterCsvToBinary' преобразует файл из формата Csv в бинарный,
@@ -12,10 +12,10 @@ namespace Converter
     /// </summary>
 
 
-    public class ConverterCsvToBinary: IConverter
+    public class ConverterCsvToBinary : IConverter
     {
         //преобразует файл из формата Csv в бинарный.
-        public  void Converts(string srcPath, string destPath)
+        public void Converts(string srcPath, string destPath)
         {
             throw new System.NotImplementedException();
         }

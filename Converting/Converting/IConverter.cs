@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Converter
+namespace Converting
 {
     ///<symmary>
     ///интерфейс 'IConverter' устанавливает методы по конвертации и обрамлению их в фоновую задачу.

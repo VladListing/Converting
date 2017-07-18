@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Converter
+namespace Converting
 {
     /// <summary>
     /// класс 'ConverterBinaryToCsv' преобразует файл из бинарного формата в Csv ,
@@ -18,7 +18,7 @@ namespace Converter
     {
         private string _pathBinary = null; //путь и имя исходного бинарного файла
         private string _pathCsv = null;    //путь и имя конечного Csv файла
-        
+
         private int _id = 0;            //колонка "id"
         private int _account = 0;       //колонка "account"
         private double _volume = 0.0;   //колонка "volume"
@@ -26,9 +26,9 @@ namespace Converter
 
         private int _counter = 0;       //счетчик записаных строк
 
-        private const double _byteToMegabyteKoef =  1048576.0;//для преобразование из байтов в мегабайты.
+        private const double _byteToMegabyteKoef = 1048576.0;//для преобразование из байтов в мегабайты.
 
-        private int _currentPercentage=0; //текущий процент выполнения.        
+        private int _currentPercentage = 0; //текущий процент выполнения.        
 
         private ProcessMappingBase _processMapping; //расчет процента выполнения конвертации.
         private int _previousPercentage;//отображение процента выполнения конвертации.
@@ -56,7 +56,7 @@ namespace Converter
         }
 
         //конвертация
-        public void Converts(string pathDat, string pathCsv)        
+        public void Converts(string pathDat, string pathCsv)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace Converter
 
                             //процент выполнения       
                             _currentPercentage = _processMapping.GetProcessMappingInPercent();
-                            DisplayPercentage(_currentPercentage);                            
+                            DisplayPercentage(_currentPercentage);
 
                         }
                         Console.Write("\r");
@@ -122,7 +122,7 @@ namespace Converter
         {
             Task task1 = new Task(() => Converts(srcPath, destPath));
             task1.Start();
-            
+
             return task1;
         }
     }
