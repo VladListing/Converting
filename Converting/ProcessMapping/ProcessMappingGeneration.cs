@@ -11,14 +11,14 @@ namespace ProcessMapping
     ///<symmary>
      
 
-    public class ProcessMappingGeneration : ProcessMappingBase//наследуемся от абстрактного класса
+    public class ProcessMappingGeneration : ProcessMappingBase
     {
-        //конструктор класса  'ProcessMappingGeneration'
+        
         public ProcessMappingGeneration(long totalCount) : base(totalCount)
         {
         }
 
-        //метод 'RecalculateFinalValue' пересчитывает текущее количество строк записанных в файл
+        //пересчитывает текущее количество строк записанных в файл
         protected override void RecalculateFinalValue()
         {
             _currentValue = _counter;

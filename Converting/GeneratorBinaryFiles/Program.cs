@@ -1,27 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProcessMapping;
+using System;
 
-namespace GeneratorBinaryFiles
+
+
+
+namespace Generator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //путь и имя создаваемого бинарного файла,  
-            //присвоение из файла настроек:'PathBinary.settings'.
-            string pathBinary = PathBinary.Default.pathBinary;
-
-            Console.SetWindowSize(100, 20);
-
             try
             {
-                InputValidation inputValidation = new InputValidation();//проверка правильности ввода с клавиатуры.
-                BinaryFiles binaryFiles = new BinaryFiles();//генерация бинарных файлов.          
+            //инициализируем и проверяем входные аргументы.
+            InputArguments inputArguments = new InputArguments();
+            var verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);
 
-                binaryFiles.BinaryFilesGenerator(pathBinary, inputValidation.GetInputValidationKey());
+            //заданное количество строк в создаваемом бинарном файле.
+            long quantityLine = Convert.ToInt64(verifiedInputArguments.quantityLine);
+
+            //путь и имя создаваемого бинарного файла.  
+            string partBinaryFile = verifiedInputArguments.pathBinaryFile;            
+            
+            Console.SetWindowSize(100, 20);
+            
+            //отображение текущего процента выполения генерации.
+            ProcessMappingBase processMapping = new ProcessMappingGeneration(quantityLine);
+                
+            //генерация бинарного файла.
+            Binary binaryFiles = new Binary(processMapping);
+            binaryFiles.Generating(partBinaryFile, quantityLine);
+
             }
             catch (Exception m)
             {

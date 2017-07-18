@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,26 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Path.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Path.settings</DependentUpon>
-    </Compile>
+    <Compile Include="ConversionSwitch.cs" />
+    <Compile Include="ConverterBinaryToCsv.cs" />
+    <Compile Include="ConverterCsvToBinary.cs" />
+    <Compile Include="IConverter.cs" />
+    <Compile Include="InputArguments.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DiagramConverting.cd" />
-    <None Include="Path.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Path.Designer.cs</LastGenOutput>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Converter\Converter.csproj">
-      <Project>{07836081-0D88-485C-B3E1-FF35E884867E}</Project>
-      <Name>Converter</Name>
+    <ProjectReference Include="..\ProcessMapping\ProcessMapping.csproj">
+      <Project>{12A767C8-BC27-4194-9DFA-8E752E8AFC06}</Project>
+      <Name>ProcessMapping</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

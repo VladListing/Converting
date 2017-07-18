@@ -5,11 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converting", "Converting\Converting.csproj", "{9172506F-5754-4234-9C1F-0FE9E3232EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "Converter\Converter.csproj", "{07836081-0D88-485C-B3E1-FF35E884867E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessMapping", "ProcessMapping\ProcessMapping.csproj", "{12A767C8-BC27-4194-9DFA-8E752E8AFC06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorBinaryFiles", "GeneratorBinaryFiles\GeneratorBinaryFiles.csproj", "{18A9C35E-8AE6-4824-AF02-3BBFA56A8235}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "GeneratorBinaryFiles\Generator.csproj", "{18A9C35E-8AE6-4824-AF02-3BBFA56A8235}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{9172506F-5754-4234-9C1F-0FE9E3232EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9172506F-5754-4234-9C1F-0FE9E3232EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9172506F-5754-4234-9C1F-0FE9E3232EA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07836081-0D88-485C-B3E1-FF35E884867E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07836081-0D88-485C-B3E1-FF35E884867E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07836081-0D88-485C-B3E1-FF35E884867E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07836081-0D88-485C-B3E1-FF35E884867E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12A767C8-BC27-4194-9DFA-8E752E8AFC06}.Release|Any CPU.ActiveCfg = Release|Any CPU

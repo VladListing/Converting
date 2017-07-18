@@ -1,58 +1,48 @@
-﻿using Converter;
+﻿using CommandLine;
+using ProcessMapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Converting
-{
+{    
     class Program
     {
-
-        // метод возвращает экземпляр одного из двух 
-        // возможных конвертирующих классов потдерживающих интерфейс 'IConverter'.
-        private static IConverter GetConverter(bool revert)
-        {
-            if (revert)
-            {
-                return new ConverterBinaryToCsv();               
-            }
-            else
-            {
-                return new ConverterCsvToBinary();
-            }
-        }
-        
-
-
         static void Main(string[] args)
         {
-            //путь и имя бинарного файла со структурами, 
-            //присвоение из файла настроек: 'Path.settings'
-            string pathBinary = Path.Default.pathBinary;
+            try
+            {
+                //инициализируем и проверяем входные аргументы.
+                InputArguments inputArguments = new InputArguments();
+                var verifiedInputArguments = inputArguments.GetCheckingInputArguments(args);                
+                
+                Console.SetWindowSize(100, 20);
 
-            //путь и имя создаваемого файла с разделителями, типа *.CSV ,
-            //присвоение из файла настроек: 'Path.settings'
-            string pathCsv = Path.Default.pathCsv;
+                //'revert'выбираем тип преобразования:
+                //-(true)-преобразование из бинарного файла в файл Csv;
+                //-(false)-преобразование из файла Csv в бинарный файл. 
+                bool revert = true;
+                ConversionSwitch conversionSwitch = new ConversionSwitch();
+                IConverter converter = conversionSwitch.GetConverter(verifiedInputArguments.pathBinaryFile, verifiedInputArguments.pathCsvFile, revert);
 
-            //(true)преобразование из бинарного файла в файл с разделителями Csv
-            //(false)преобразование из файла Csv в бинарный файл 
-            bool revert = true;
-
-            Console.SetWindowSize(100, 20);
-
-                //выбираем тип преобразования
-                IConverter converter = GetConverter(revert);
-
-                //создаем задачу     
-                var task = converter.GetConvertAsync(pathBinary, pathCsv);
+                //создаем задачу.     
+                var task = converter.ConvertAsync(verifiedInputArguments.pathBinaryFile, verifiedInputArguments.pathCsvFile);
+                Console.WriteLine($"Состояние задачи: {task.Status}");
+                Console.WriteLine(new string('_', 29));
                 task.Wait();
-
                 Console.WriteLine(new string('_', 29));
                 Console.WriteLine($"Состояние задачи: {task.Status}");
-                
+
                 Console.ReadLine();
+            }
+            catch (Exception m)
+            {
+                Console.WriteLine(m.Message);
+            }
+            Console.ReadLine();
         }
     }
 }

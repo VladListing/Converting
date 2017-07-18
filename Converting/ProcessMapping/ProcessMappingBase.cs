@@ -6,17 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProcessMapping
 {
-    //todo:
-    //перечень возможных режимов 
-    //public enum ProcessMode
-    //{
-    //    Converting,
-    //    Generation
-    //}
-
-   
     ///<symmary>
-    /// Абстрактный класс 'processMapping' отображает текуший процент выполнения конвертации или генерации в процентах.
+    /// Абстрактный класс 'processMapping' расчет текущего процента выполнения конвертации или генерации в процентах.
     ///<symmary>
     
 
@@ -28,8 +19,9 @@ namespace ProcessMapping
         private int _counter1 = 0;           //счетчик к-ва строк после которого производиться перерасчет процента выполнения (обнуляемый)
         protected long _counter = 0;         //счетчик общего количества строк (не обнуляемый)
         protected long _currentValue = 0;    //текущий значение контролируемой величины по конечному файлу (размер или к-во строк)
+        private int _percent = 0;            //текуший процент выполнения
 
-        protected abstract double _correctionValue { get; } //свойство при чтении коэффициента корректировки 
+        protected abstract double _correctionValue { get; } //свойство (Автоматическое) при чтении коэффициента корректировки 
 
         //пользовательский конструктор aбстрактного класса
         protected ProcessMappingBase(long totalCount)
@@ -38,7 +30,7 @@ namespace ProcessMapping
             InitDisplayPeriod(_totalCount);
         }
 
-        //метод расчитывающий необходимую и достаточную периодичность расчета текушего процента
+        //опредиление необходимой и достаточной периодичности для расчета текушего процента выполнения
         private void InitDisplayPeriod(long totalCount)
         {
             if (totalCount < 1000)
@@ -63,8 +55,8 @@ namespace ProcessMapping
             }
         }
 
-        //метод расчитывающий  текущий процент выполнения 
-        public void ProcessMappingInPercent()
+        //расчет  текущего процента выполнения 
+        public int GetProcessMappingInPercent()
         {
             _counter++;
             _counter1++; 
@@ -79,14 +71,17 @@ namespace ProcessMapping
                 {
                     _processPercent = 99;
                 }
-                Console.Write("\r");
-                Console.Write($"выполнено: {Math.Truncate(_processPercent)} % " );
-                 _counter1 = 0;
+                
+                _percent = (int)Math.Truncate(_processPercent);
+                _counter1 = 0;
             }
-        }
+            return _percent;
+        }        
 
-        //абстрактный метод, присваивает  текущее значение контролируемой величине в конечном файле 
+
+        //присвоение  текущего значение контролируемой величине в конечном файле 
         //(размер файла или к-во строк в нем)
-        protected abstract void RecalculateFinalValue();       
+        protected abstract void RecalculateFinalValue();
+               
     }
 }
