@@ -22,7 +22,7 @@ namespace Generator
             public int quantityLine { get; set; }
         }
 
-        //метод. возвращает входные аргументы после проверки  
+        //входные аргументы после проверки  
         public  Options GetCheckingInputArguments(string[] args)
         {
             Options options = new Options();

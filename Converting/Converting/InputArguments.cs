@@ -22,7 +22,7 @@ namespace Converting
             public string pathCsvFile { get; set; }
         }
 
-        //метод. возвращает входные аргументы после проверки  
+        //входные аргументы после проверки  
         public Options GetCheckingInputArguments(string[] args)
         {
             Options options = new Options();

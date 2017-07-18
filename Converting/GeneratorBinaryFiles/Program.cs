@@ -29,7 +29,7 @@ namespace Generator
                 
             //генерация бинарного файла.
             Binary binaryFiles = new Binary(processMapping);
-            binaryFiles.GeneratingBinaryFile(partBinaryFile, quantityLine);
+            binaryFiles.Generating(partBinaryFile, quantityLine);
 
             }
             catch (Exception m)

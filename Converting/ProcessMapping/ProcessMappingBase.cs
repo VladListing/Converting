@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ProcessMapping
 {
     ///<symmary>
-    /// Абстрактный класс 'processMapping' отображает текуший процент выполнения конвертации или генерации в процентах.
+    /// Абстрактный класс 'processMapping' расчет текущего процента выполнения конвертации или генерации в процентах.
     ///<symmary>
     
 
@@ -19,7 +19,7 @@ namespace ProcessMapping
         private int _counter1 = 0;           //счетчик к-ва строк после которого производиться перерасчет процента выполнения (обнуляемый)
         protected long _counter = 0;         //счетчик общего количества строк (не обнуляемый)
         protected long _currentValue = 0;    //текущий значение контролируемой величины по конечному файлу (размер или к-во строк)
-        private int _percent = 0;            //текуший процента выполнения в формате int
+        private int _percent = 0;            //текуший процент выполнения
 
         protected abstract double _correctionValue { get; } //свойство (Автоматическое) при чтении коэффициента корректировки 
 
@@ -30,7 +30,7 @@ namespace ProcessMapping
             InitDisplayPeriod(_totalCount);
         }
 
-        //метод расчитывающий необходимую и достаточную периодичность расчета текушего процента
+        //опредиление необходимой и достаточной периодичности для расчета текушего процента выполнения
         private void InitDisplayPeriod(long totalCount)
         {
             if (totalCount < 1000)
@@ -55,7 +55,7 @@ namespace ProcessMapping
             }
         }
 
-        //метод расчитывающий  текущий процент выполнения 
+        //расчет  текущего процента выполнения 
         public int GetProcessMappingInPercent()
         {
             _counter++;
@@ -76,14 +76,10 @@ namespace ProcessMapping
                 _counter1 = 0;
             }
             return _percent;
-        }
-        
-        public void Write()
-        {
+        }        
 
-        }
 
-        //абстрактный метод, присваивает  текущее значение контролируемой величине в конечном файле 
+        //присвоение  текущего значение контролируемой величине в конечном файле 
         //(размер файла или к-во строк в нем)
         protected abstract void RecalculateFinalValue();
                

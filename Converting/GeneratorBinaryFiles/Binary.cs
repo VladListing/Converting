@@ -15,7 +15,7 @@ namespace Generator
 
     public class Binary
     {
-        //описание структуры 'TradeRecord'.
+        //структура 'TradeRecord'.
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct TradeRecord
         {
@@ -36,18 +36,18 @@ namespace Generator
 
         private string _pathBinaryFiles = null; //путь и имя создаваемого бинарного файла.
         private long _counter = 0; //счетчик записаных в файл строк.
-        private ProcessMappingBase _processMapping;//текущий процент выполнения создания файла.       
-        private int _currentPercentage = 0;//текущий процент выполнения 
+        private ProcessMappingBase _processMapping;//экземпляр.       
+        private int _currentPercentage = 0;//текущий процент выполнения. 
         private int _previousPercentage = 0;//предыдущий процент выполнения.       
 
 
-        //конструктор пользовательский, класса 'BinaryFiles'
+        
         public Binary(ProcessMappingBase processMapping)
         {
             _processMapping = processMapping;
         }
 
-        //метод.отображение текущего процента выполнения
+        //метод.отображение текущего процента выполнения только при увеличении более чем на 5-ть %
         public void DisplayPercentage(int currentPercentage)
         {
             _currentPercentage = currentPercentage;
@@ -62,8 +62,8 @@ namespace Generator
             }
         }
 
-        //метод. создание бинарного файла
-        public void GeneratingBinaryFile(string pathBinaryFiles, long quantityLine )
+        //создание бинарного файла
+        public void Generating(string pathBinaryFiles, long quantityLine )
         {
             Console.SetWindowSize(100, 20);
             Console.WriteLine($"Ждите, выполняется запись:  {quantityLine} строк(и)  в файл: {pathBinaryFiles} " );
@@ -74,7 +74,7 @@ namespace Generator
 
             try
             {                
-                File.WriteAllText(pathBinaryFiles, null); //очистка содержимого файла (в случае если файл уже существует).
+                File.WriteAllText(pathBinaryFiles, null); 
 
                 using (var writer = new BinaryWriter(File.Open(pathBinaryFiles, FileMode.Append, FileAccess.Write)))
                 {
@@ -86,7 +86,7 @@ namespace Generator
                         writer.Write(trade.comment);
                         _counter++;
 
-                        //расчет текушего процента выполнения    
+                        //процента выполнения    
                         _currentPercentage = _processMapping.GetProcessMappingInPercent();                        
                         DisplayPercentage(_currentPercentage);
                     }

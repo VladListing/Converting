@@ -15,7 +15,7 @@ namespace Generator
 
         Random random = new Random(DateTime.Now.Millisecond);
 
-        private string _sumString = null;// "склеянная строка со случайными значениями по текущей сделке"
+        private string _sumString = null;//"склеянная строка со случайными значениями по текущей сделке"
         private int _number = 0;         // номер варианта случайной строки
         private int _profit = 0;         // сумма по прибыльной сделке
         private int _loss = 0;           // сумма по убыточной сделке

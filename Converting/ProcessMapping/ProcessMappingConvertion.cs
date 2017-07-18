@@ -12,30 +12,29 @@ namespace ProcessMapping
     ///<symmary>
 
 
-    public class ProcessMappingConvertion : ProcessMappingBase//наследуемся от абстрактного класса
+    public class ProcessMappingConvertion : ProcessMappingBase
     {
         private readonly string _pathToFinalFile; //путь конечного бинарного файла 
 
-
-        //конструктор класса 'ProcessMappingConvertion'
-        public ProcessMappingConvertion(string pathToSrcFile, string pathToFinalFile) : base(GetCount(pathToSrcFile))
+        
+        public ProcessMappingConvertion(string pathToSrcFile, string pathToFinalFile) : base(GetCalculationFileSize(pathToSrcFile))
         {
             _pathToFinalFile = pathToFinalFile;
         }
 
         
         
-        //статический метод 'GetCount', возвращает текущий размер файла
-        public static long GetCount(string pathToFile)
+        //возвращает  размер  файла
+        public static long GetCalculationFileSize(string pathToFile) 
         {
             var fi = new FileInfo(pathToFile);
             return fi.Length;
         }
 
-        //метод 'RecalculateFinalValue' пересчитывает текущий размер сконвертированного файла
+        //пересчитывает текущий размер сконвертированного файла
         protected override void RecalculateFinalValue()
         {
-            _currentValue = GetCount(_pathToFinalFile);
+            _currentValue = GetCalculationFileSize(_pathToFinalFile);
         }
 
         // свойство при чтении  корректирующего коэффициента 

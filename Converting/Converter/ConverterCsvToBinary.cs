@@ -14,13 +14,13 @@ namespace Converter
 
     public class ConverterCsvToBinary: IConverter
     {
-        //метод 'Convert', преобразует файл из формата Csv в бинарный.
-        public  void Convert(string srcPath, string destPath)
+        //преобразует файл из формата Csv в бинарный.
+        public  void Converts(string srcPath, string destPath)
         {
             throw new System.NotImplementedException();
         }
 
-        //метод 'GetConvertAsync' обрамляет в фоновую задачу
+        //обрамляет в фоновую задачу
         public Task ConvertAsync(string srcPath, string destPath)
         {
             throw new System.NotImplementedException();
