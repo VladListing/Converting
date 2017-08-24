@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeneratorBinaryFiles
 {
     ///<symmary>
     ///класс 'RandomString' заполняем столбец 'коментарий' случайными значениями
-    ///<symmary>
+    ///</symmary>
 
     class RandomString
     {
 
-        Random random = new Random(DateTime.Now.Millisecond);
+        Random _random = new Random(DateTime.Now.Millisecond);
 
         private string _sumString = null;// "склеянная строка со случайными значениями по текущей сделке"
         private int _number = 0;         // номер варианта случайной строки
@@ -23,9 +19,9 @@ namespace GeneratorBinaryFiles
 
         public string GetCommentRandom()
         {
-            _number = random.Next(0, 6);
-            _loss = random.Next(-1000, 0);
-            _profit = random.Next(0, 10000);
+            _number = _random.Next(0, 6);
+            _loss = _random.Next(-1000, 0);
+            _profit = _random.Next(0, 10000);
 
             switch (_number)
             {
