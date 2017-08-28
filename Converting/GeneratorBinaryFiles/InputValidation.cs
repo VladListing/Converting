@@ -8,7 +8,7 @@ namespace GeneratorBinaryFiles
 {
     ///<symmary>
     ///класс 'InputValidation' проверяет правильность ввода с клавиатуры целых положительных чисел
-    ///<symmary>
+    ///</symmary>
 
     class InputValidation
     {
